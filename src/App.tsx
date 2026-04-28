@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>git 
+      <Routes> 
         <Route path="/" element={<Login />} />
 
         <Route
@@ -45,4 +45,4 @@ function App() {
 }
 
 export default App
-git 
+ 
