@@ -4,24 +4,26 @@ import { useAuthStore } from "../store/authStore";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuthStore();
+  const { login, error, loading } = useAuthStore();
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!email || !password) {
-      alert("Please fill all fields");
-      return;
-    }
+  await login(email, password);
 
-    login();
+  const user = useAuthStore.getState().user;
+
+  if (user) {
     navigate("/dashboard");
-  };
+  }
+};
 
   return (
+ 
     <div className="min-h-screen grid md:grid-cols-2 bg-slate-50">
       
       <div className="hidden md:flex flex-col justify-center items-center bg-blue-600 text-white p-10">
@@ -55,9 +57,13 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition">
-            Login
-          </button>
+      
+          <button
+  className="w-full bg-blue-600 text-white py-3 rounded-xl"
+  disabled={loading}
+>
+  {loading ? "Logging in..." : "Login"}
+</button>
         </form>
       </div>
     </div>
