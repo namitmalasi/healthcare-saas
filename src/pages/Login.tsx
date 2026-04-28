@@ -57,11 +57,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen grid md:grid-cols-2 bg-slate-50">
+    <div className="min-h-screen grid md:grid-cols-2 bg-gray-50">
       {/* Left Side */}
-      <div className="hidden md:flex flex-col justify-center items-center bg-blue-600 text-white p-10">
-        <h1 className="text-5xl font-bold mb-4">MediFlow</h1>
-        <p className="text-blue-100 text-center max-w-md text-lg">
+      <div className="hidden md:flex flex-col justify-center items-center bg-gray-900 text-white p-10">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">MediFlow</h1>
+        <p className="text-gray-400 text-center max-w-md">
           Smart healthcare management platform for hospitals and clinics.
         </p>
       </div>
@@ -70,13 +70,15 @@ const Login = () => {
       <div className="flex justify-center items-center p-6">
         <form
           onSubmit={handleSubmit}
-          className="bg-white w-full max-w-md rounded-2xl shadow-md p-8"
+          className="bg-white w-full max-w-md rounded-lg border border-gray-200 p-8"
         >
-          <h2 className="text-3xl font-bold mb-2">Welcome Back</h2>
-          <p className="text-slate-500 mb-6">Login to continue</p>
+          <h2 className="text-2xl font-bold mb-1 text-gray-900">
+            Welcome Back
+          </h2>
+          <p className="text-gray-600 text-sm mb-6">Login to continue</p>
 
           {(formError || error) && (
-            <div className="mb-4 rounded-xl bg-red-50 border border-red-200 p-3 text-sm text-red-600">
+            <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">
               {formError || getFriendlyError(error || "")}
             </div>
           )}
@@ -84,7 +86,7 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email address"
-            className="w-full border rounded-xl p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3 mb-4 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -92,7 +94,7 @@ const Login = () => {
           <input
             type="password"
             placeholder="Password"
-            className="w-full border rounded-xl p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-lg p-3 mb-6 text-sm focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -100,12 +102,12 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition disabled:opacity-60"
+            className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 transition disabled:opacity-60 font-medium text-sm"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          <p className="text-sm text-slate-400 mt-4 text-center">
+          <p className="text-xs text-gray-500 mt-4 text-center">
             Secure login powered by Firebase
           </p>
         </form>

@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex">
+    <div className="flex bg-gray-50 min-h-screen">
       <Sidebar
         isOpen={isSidebarOpen}
         closeSidebar={() => setIsSidebarOpen(false)}
@@ -17,7 +17,8 @@ const Dashboard = () => {
         <Navbar openSidebar={() => setIsSidebarOpen(true)} />
 
         <main className="p-6">
-          <div className="grid md:grid-cols-4 gap-5">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Dashboard</h2>
+          <div className="grid md:grid-cols-4 gap-4">
             <StatCard title="Total Patients" value="1,248" />
             <StatCard title="Appointments" value="86" />
             <StatCard title="Revenue" value="$12,430" />

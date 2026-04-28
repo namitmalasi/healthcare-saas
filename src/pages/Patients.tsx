@@ -9,7 +9,7 @@ const Patients = () => {
   const { viewMode, setViewMode } = usePatientStore();
 
   return (
-    <div className="flex bg-slate-50 min-h-screen">
+    <div className="flex bg-gray-50 min-h-screen">
       <Sidebar />
 
       <div className="flex-1">
@@ -17,15 +17,15 @@ const Patients = () => {
 
         <main className="p-6">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">Patients</h2>
+            <h2 className="text-xl font-bold text-gray-900">Patients</h2>
 
             <div className="space-x-2">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`px-4 py-2 rounded-xl ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition ${
                   viewMode === "grid"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white border"
+                    ? "bg-gray-900 text-white"
+                    : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 Grid
@@ -33,10 +33,10 @@ const Patients = () => {
 
               <button
                 onClick={() => setViewMode("list")}
-                className={`px-4 py-2 rounded-xl ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition ${
                   viewMode === "list"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white border"
+                    ? "bg-gray-900 text-white"
+                    : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 List
@@ -45,7 +45,7 @@ const Patients = () => {
           </div>
 
           {viewMode === "grid" ? (
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-4">
               {patients.map((patient) => (
                 <PatientCard key={patient.id} patient={patient} />
               ))}
