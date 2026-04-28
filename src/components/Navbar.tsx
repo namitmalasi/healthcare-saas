@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 
-const Navbar = () => {
+
+type Props = {
+  openSidebar: () => void;
+};
+const Navbar = ({ openSidebar }: Props) => {
   const navigate = useNavigate();
   const { logout } = useAuthStore();
 
@@ -12,6 +16,9 @@ const Navbar = () => {
 
   return (
     <header className="bg-white border-b px-6 py-4 flex justify-between items-center">
+      <button onClick={openSidebar} className="md:hidden text-2xl">
+        ☰
+      </button>
       <h2 className="text-xl font-semibold">Dashboard</h2>
 
       <button

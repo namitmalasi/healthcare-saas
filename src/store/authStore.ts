@@ -11,6 +11,7 @@ type AuthState = {
   user: User | null;
   loading: boolean;
   error: string | null;
+  isAuthChecked: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   initAuth: () => void;
@@ -20,6 +21,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   loading: false,
   error: null,
+  isAuthChecked: false, 
 
   login: async (email, password) => {
     set({ loading: true, error: null });
@@ -38,7 +40,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   initAuth: () => {
     onAuthStateChanged(auth, (user) => {
-      set({ user });
+      set({ user,isAuthChecked: true });
     });
   },
 }));
