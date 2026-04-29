@@ -18,6 +18,7 @@ const Dashboard = () => {
 
         <main className="p-6">
           <h2 className="text-xl font-bold text-gray-900 mb-6">Dashboard</h2>
+
           <div className="grid md:grid-cols-4 gap-4">
             <StatCard title="Total Patients" value="1,248" />
             <StatCard title="Appointments" value="86" />
