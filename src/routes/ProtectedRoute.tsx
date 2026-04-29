@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
+import type { ReactNode } from "react";
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { user, isAuthChecked } = useAuthStore();
 
   if (!isAuthChecked) {

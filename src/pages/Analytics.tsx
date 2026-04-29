@@ -1,5 +1,6 @@
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -22,12 +23,17 @@ const data = [
 ];
 
 const Analytics = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="flex bg-gray-50 min-h-screen">
-      <Sidebar />
+      <Sidebar
+        isOpen={isSidebarOpen}
+        closeSidebar={() => setIsSidebarOpen(false)}
+      />
 
       <div className="flex-1">
-        <Navbar />
+        <Navbar openSidebar={() => setIsSidebarOpen(true)} />
 
         <main className="p-6 space-y-6">
           <h2 className="text-xl font-bold text-gray-900">Analytics</h2>

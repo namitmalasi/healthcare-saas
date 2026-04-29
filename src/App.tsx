@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
@@ -7,21 +7,16 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
 
-
-
 function App() {
-   const { initAuth,user } = useAuthStore();
+  const { initAuth } = useAuthStore();
 
   useEffect(() => {
     initAuth();
-  if (user) navigate("/dashboard");
-
   }, []);
-
 
   return (
     <BrowserRouter>
-      <Routes> 
+      <Routes>
         <Route path="/" element={<Login />} />
 
         <Route
@@ -55,5 +50,4 @@ function App() {
   );
 }
 
-export default App
- 
+export default App;

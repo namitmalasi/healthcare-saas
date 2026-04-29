@@ -4,16 +4,21 @@ import PatientCard from "../components/PatientCard";
 import PatientTable from "../components/PatientTable";
 import { patients } from "../data/patients";
 import { usePatientStore } from "../store/patientStore";
+import { useState } from "react";
 
 const Patients = () => {
   const { viewMode, setViewMode } = usePatientStore();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="flex bg-gray-50 min-h-screen">
-      <Sidebar />
+      <Sidebar
+        isOpen={isSidebarOpen}
+        closeSidebar={() => setIsSidebarOpen(false)}
+      />
 
       <div className="flex-1">
-        <Navbar />
+        <Navbar openSidebar={() => setIsSidebarOpen(true)} />
 
         <main className="p-6">
           <div className="flex justify-between items-center mb-6">
